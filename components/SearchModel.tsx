@@ -18,7 +18,7 @@ const SearchModel = ({ model, setModel }: SearchModelProps) => {
 
   return (
     <div className="search-manufacturer">
-      <Combobox>
+      <Combobox value={model} onChange={setModel}>
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
             <Image src="/tesla-logo.png" alt="Car logo" width={20} height={20} className="ml-4" />
