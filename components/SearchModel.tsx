@@ -35,18 +35,38 @@ const SearchModel = ({model, setModel} : SearchModelProps) => {
                     onChange={(e) => setQuery(e.target.value)}
                 />
             </div>
-        </Combobox>
-        <Transition 
+        <Transition
+            show={filteredModels.length > 0 || (query !== "" && filteredModels.length === 0)} 
             as={Fragment}
             leave='transition ease-in duration-100'
             leaveFrom='opacity-100'
             leaveTo='opacity-0'
             afterLeave={() => setQuery('')}
-        >
+            >
             <Combobox.Options>
-                
-            </Combobox.Options>
-        </Transition>
+                {filteredModels.length === 0 && query !== "" ? (
+                    <Combobox.Option
+                    value={query}
+                    className='search-manufacturer__option'
+                    >
+                        Create "{query}"
+                    </Combobox.Option>
+                ): (
+                    filteredModels.map((item) => (
+                        <Combobox.Option
+                        key={item}
+                        value={item}
+                        className={({active}) => `
+                        relative search-manufacturer__option ${active ? 'bg-primary-blue text-white' : 'text-gray-900'}
+                        `
+                        
+                    }
+                    ></Combobox.Option>
+                    ))
+                    ) }
+                </Combobox.Options>
+            </Transition>
+        </Combobox>
     </div>
   )
 }
