@@ -1,16 +1,17 @@
-import { CustomFilter, Hero, SearchBar } from '@/components'
-import Image from 'next/image'
+import { CustomFilter, Hero, SearchBar } from "@/components";
+import { fetchCars } from "@/utils";
+import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const allCars = await fetchCars();
+
   return (
     <main className="overflow-hidden">
       <Hero />
-      
-      <div className="mt-12 padding-x padding-y max-width" id='discover'>
+
+      <div className="mt-12 padding-x padding-y max-width" id="discover">
         <div className="home__text-container">
-          <h1 className="text-4xl font-extrabold">
-            Tesla Catalouge
-          </h1>
+          <h1 className="text-4xl font-extrabold">Tesla Catalouge</h1>
           <p>Explore existing Tesla Inventory</p>
         </div>
         <div className="home__filters">
@@ -22,5 +23,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-  )
+  );
 }
