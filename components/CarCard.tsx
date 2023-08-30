@@ -32,7 +32,7 @@ const CarCard = ({ car }) => {
         <Image src="/teslahero.png" alt="car model" fill priority className="object-contain" />
       </div>
 
-      <div className="relative flex justify-between w-full mx-5 mt-2">
+      <div className="relative flex  w-full mt-2">
         <div className="flex group-hover:invisible w-full justify-between text-gray">
           <div className="flex flex-col justify-center items-center gap-2">
             <Image src="/steering-wheel.svg" width={20} height={20} alt="steering-wheel" />
@@ -58,7 +58,7 @@ const CarCard = ({ car }) => {
             textStyles="text-white text-[14px] leading-[17px] font-bold"
             rightIcon="/right-arrow.svg"
             handleClick={() => {
-              setIsOpen;
+              setIsOpen(true);
             }}
           />
         </div>
