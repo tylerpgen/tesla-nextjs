@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { SearchModel } from "./";
 import Image from "next/image";
 
@@ -15,12 +16,15 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => {
 const SearchBar = () => {
   const [model, setModel] = useState("");
   const [type, setType] = useState("");
+  const router = useRouter();
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (model === "" && type === "") {
       return alert("Please fill in the search bar");
     }
+
+    updateSearchParams(type.toLowerCase(), model.toLowerCase());
   };
 
   const updateSearchParams = (model: string, type: string) => {
@@ -31,6 +35,16 @@ const SearchBar = () => {
     } else {
       searchParams.delete("type");
     }
+
+    if (model) {
+      searchParams.set("model", model);
+    } else {
+      searchParams.delete("model");
+    }
+
+    const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+
+    router.push(newPathname);
   };
 
   return (
