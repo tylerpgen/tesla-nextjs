@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useState } from "react";
 import { SearchModel } from "./";
 import Image from "next/image";
@@ -14,7 +15,23 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => {
 const SearchBar = () => {
   const [model, setModel] = useState("");
   const [type, setType] = useState("");
-  const handleSearch = () => {};
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (model === "" && type === "") {
+      return alert("Please fill in the search bar");
+    }
+  };
+
+  const updateSearchParams = (model: string, type: string) => {
+    const searchParams = new URLSearchParams(window.location.search);
+
+    if (type) {
+      searchParams.set("type", type);
+    } else {
+      searchParams.delete("type");
+    }
+  };
 
   return (
     <form className="searchbar" onSubmit={handleSearch}>
