@@ -38,7 +38,9 @@ const SearchBar = () => {
           placeholder="Model 3"
           className="searchbar__input"
         />
+        <SearchButton otherClasses="sm:hidden" />
       </div>
+      <SearchButton otherClasses="max-sm:hidden" />
     </form>
   );
 };
