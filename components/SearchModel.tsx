@@ -25,7 +25,7 @@ const SearchModel = ({ model, setModel }: SearchModelProps) => {
           </Combobox.Button>
           <Combobox.Input
             className="search-manufacturer__input"
-            placeholder="Model"
+            placeholder="Make"
             displayValue={(model: string) => model}
             onChange={(e) => setQuery(e.target.value)}
           />
