@@ -21,7 +21,13 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
               alt="chevron up down"
             />
           </Listbox.Button>
-          <Transition></Transition>
+          <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
+            <Listbox.Options className="custom-filter__options">
+              {options.map((option) => (
+                <Listbox.Option>{({ selected }) => <span>{option.title}</span>}</Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </Transition>
         </div>
       </Listbox>
     </div>
