@@ -6,7 +6,15 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CustomFilterProps } from "@/types";
 
 const CustomFilter = ({ title, options }: CustomFilterProps) => {
+  const router = useRouter();
   const [selected, setSelected] = useState(options[0]);
+
+  const handleUpdateParams = (type: string, value: string) => {
+    const newPathName = "";
+
+    router.push(newPathname, { scroll: false });
+  };
+
   return (
     <div className="w-fit">
       <Listbox value={selected} onChange={(e) => setSelected(e)}>
